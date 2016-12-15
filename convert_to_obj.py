@@ -36,9 +36,14 @@ def iter_tiltbrush_paths():
     import config
     yield r"C:\src\tb"
     yield config.tiltBrushInstallDir
-    import _winreg, re
-    base = _winreg.QueryValueEx(
-        _winreg.OpenKey(_winreg.HKEY_CURRENT_USER, r"Software\Valve\Steam"), "SteamPath")[0]
+    if os.name != 'posix':
+        import _winreg
+        base = _winreg.QueryValueEx(
+            _winreg.OpenKey(_winreg.HKEY_CURRENT_USER, r"Software\Valve\Steam"), "SteamPath")[0]
+    else:
+        base = "%s/Library/Application Support/Steam/" % os.environ['HOME']
+    import re
+
     yield os.path.join(base, "steamapps/common/Tilt Brush")
     try: config = file(os.path.join(base, "config/config.vdf")).read()
     except IOError: config = ""

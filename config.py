@@ -1,3 +1,3 @@
-tiltBrushInstallDir = r"D:\SteamLibrary\SteamApps\common\Tilt Brush"
-FBXSDKInstallDir = r'D:\Program Files\Autodesk\FBX\FBX Python SDK\2015.1\lib\Python27_x64'
-tiltBrushExportDir = r"D:\Documents\Tilt Brush\Exports"
+tiltBrushInstallDir = "%s/SteamLibrary/SteamApps/common/Tilt Brush" % os.environ['HOME']
+FBXSDKInstallDir = "/Applications/Autodesk/FBX Python SDK/2015.1/lib"
+tiltBrushExportDir = "../assets/tests"
